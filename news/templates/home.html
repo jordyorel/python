@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+      <div class="col-md-6 text-center">
+        {% if user.is_authenticated %}
+          <h1 class="mb-4">Welcome {{ user.username }}!</h1>
+          <p class="lead">You are {{ user.age }} years old.</p>
+          <a href="{% url 'logout' %}" class="btn btn-primary mt-4">Log Out</a>
+        {% else %}
+          <h1 class="mb-4">Welcome to our Newspaper!</h1>
+          <p class="lead">Please sign up or log in to access the content.</p>
+          <div class="mt-4">
+            <a href="{% url 'login' %}" class="btn btn-outline-primary" >Log In</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary me-4">Sign Up</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+
+
+
+
+
